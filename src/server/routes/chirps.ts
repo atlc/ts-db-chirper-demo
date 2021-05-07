@@ -27,8 +27,11 @@ router.get('/:id', async (req, res) => {
 
 router.post('/', async (req, res) => {
     const id = uuidv4();
+    const user_id = "234jkhf978dy34ew8u"; // Hardcoding a user id here since this is pre-auth
+    
     const newChirp = {
         id,
+        user_id,
         ...req.body
     };
 
