@@ -20,3 +20,9 @@ export const Query = <T = MySQL_Response>(query: string, values?: any[]) => {
         });
     });
 }
+
+import Chirps from './queries/chirps';
+
+export default {
+    Chirps
+}

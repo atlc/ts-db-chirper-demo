@@ -19,3 +19,17 @@ export interface MySQL_Error {
 }
 
 export type MySQL_Response = MySQL_Success & MySQL_Error;
+
+export interface Users {
+    id: string;
+    username: string;
+    created_at: string;
+    updated_at: string;
+}
+
+export interface Chirps {
+    id: string;
+    user_id: Users["id"];
+    created_at: string;
+    updated_at: string;
+}
