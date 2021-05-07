@@ -1,10 +1,28 @@
-import * as React from 'react'
+import * as React from 'react';
+import { useState, useEffect } from 'react';
+import { ChirpWithAuthor } from '../../utilities/types';
+import ChirpCard from '../components/ChirpCard';
+
+
 
 const AllChirps = () => {
+
+    const [chirps, setChirps] = useState<ChirpWithAuthor[]>(null);
+
+    useEffect(() => {
+        fetch('/api/chirps')
+            .then(res => res.json())
+            .then(data => setChirps(data));
+    }, []);
+
     return (
-        <div>
-            <h1>All Chirps</h1>
-        </div>
+        <>
+            <div className="d-flex justify-content-center row">
+                {chirps?.map(chirp => (
+                    <ChirpCard key={chirp.id} {...chirp} />
+                ))}
+            </div>
+        </>
     )
 }
 

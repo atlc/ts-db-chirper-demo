@@ -30,6 +30,9 @@ export interface Users {
 export interface Chirps {
     id: string;
     user_id: Users["id"];
+    content: string;
     created_at: string;
     updated_at: string;
 }
+
+export type ChirpWithAuthor = Chirps & Users;
