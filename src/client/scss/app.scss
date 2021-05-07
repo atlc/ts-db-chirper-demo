@@ -3,3 +3,11 @@ $theme-colors: (
 );
 
 @import '../../../node_modules/bootstrap/scss/bootstrap.scss';
+
+body {
+    background-color: $dark;
+}
+
+.vh-90 {
+    height: 90vh !important;
+}

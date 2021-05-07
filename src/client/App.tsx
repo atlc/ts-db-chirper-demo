@@ -1,64 +1,39 @@
 import * as React from 'react';
-import { useState, useEffect } from 'react';
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
 
-/* HOOK REACT EXAMPLE */
-const App = (props: AppProps) => {
-	const [greeting, setGreeting] = useState<string>('');
+import Navbar from './components/Navbar';
+import Home from './views/Home';
+import AllChirps from './views/AllChirps';
+import CreateChirp from './views/CreateChirp';
+import ChirpDetails from './views/ChirpDetails';
+import ChirpAdmin from './views/ChirpAdmin';
 
-	useEffect(() => {
-		async function getGreeting() {
-			try {
-				const res = await fetch('/api/hello');
-				const greeting = await res.json();
-				setGreeting(greeting);
-			} catch (error) {
-				console.log(error);
-			}
-		}
-		getGreeting();
-	}, []);
 
+const App = () => {
 	return (
-		<main className="container my-5">
-			<h1 className="text-primary text-center">Hello {greeting}!</h1>
-		</main>
+		<BrowserRouter>
+			<Navbar />
+			<div className="vh-90 overflow-hidden d-flex justify-content-center align-items-center text-light">
+				<Switch>
+					<Route exact path='/'>
+						<Home />
+					</Route>
+					<Route exact path='/chirps'>
+						<AllChirps />
+					</Route>
+					<Route exact path='/chirps/create'>
+						<CreateChirp />
+					</Route>
+					<Route exact path='/chirps/:id'>
+						<ChirpDetails />
+					</Route>
+					<Route exact path='/chirps/:id/admin'>
+						<ChirpAdmin />
+					</Route>
+				</Switch>
+			</div>
+		</BrowserRouter>
 	);
-};
-
-interface AppProps {}
-
-/* CLASS REACT EXAMPLE */
-// class App extends React.Component<IAppProps, IAppState> {
-// 	constructor(props: IAppProps) {
-// 		super(props);
-// 		this.state = {
-// 			name: null
-// 		};
-// 	}
-
-// 	async componentDidMount() {
-// 		try {
-// 			let r = await fetch('/api/hello');
-// 			let name = await r.json();
-// 			this.setState({ name });
-// 		} catch (error) {
-// 			console.log(error);
-// 		}
-// 	}
-
-// 	render() {
-// 		return (
-// 			<main className="container my-5">
-// 				<h1 className="text-primary text-center">Hello {this.state.name}!</h1>
-// 			</main>
-// 		);
-// 	}
-// }
-
-// export interface IAppProps {}
-
-// export interface IAppState {
-// 	name: string;
-// }
+}
 
 export default App;
