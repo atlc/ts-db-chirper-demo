@@ -17,7 +17,7 @@ const AllChirps = () => {
 
     return (
         <>
-            <div className="d-flex justify-content-center row">
+            <div className="d-flex justify-content-center row px-1">
                 {chirps?.map(chirp => (
                     <ChirpCard key={chirp.id} {...chirp} />
                 ))}

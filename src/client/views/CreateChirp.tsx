@@ -39,13 +39,13 @@ const CreateChirp = () => {
 
     return (
         <div className="d-flex min-vw-100 justify-content-center">
-            <div className="col-md-8">
+            <div className="col-md-6 col-sm-9">
                 <div className="card-body text-center shadow-lg">
                     <textarea
-                        defaultValue={content}
+                        style={{ width: '100%', fontSize: '1.3rem' }}
+                        placeholder={content}
                         onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) => setContent(e.target.value)}
-                        cols={100}
-                        rows={10}
+                        rows={4}
                     />
                     <div className="card-footer text-primary d-flex justify-content-around">
                         <button onClick={handleSubmit} className="btn btn-outline-success">Post Your Chirp!</button>

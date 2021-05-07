@@ -29,7 +29,7 @@ const ChirpAdmin = () => {
             .then(res => res.json())
             .then(res => {
                 console.log(res);
-                if (res.message === "The chirp was updated successfully!") {
+                if (res.message === "The chirp was deleted successfully!") {
                     setContent('');
                     Swal.fire({
                         title: "Success!",
@@ -77,18 +77,18 @@ const ChirpAdmin = () => {
 
     return (
         <div className="d-flex min-vw-100 justify-content-center">
-            <div className="col-md-8">
+            <div className="col-md-6 col-sm-9">
                 <div className="card-body text-center shadow-lg">
                     <h2 className="text-secondary">@{chirp?.username}</h2>
                     <textarea
                         defaultValue={content}
                         onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) => setContent(e.target.value)}
-                        cols={100}
-                        rows={10}
+                        style={{ width: '100%', fontSize: '1.3rem' }}
+                        rows={4}
                     />
                     <div className="card-footer text-primary d-flex justify-content-around">
+                        <button onClick={handleDelete} className="btn btn-outline-danger">DELETE CHIRP</button>
                         <button onClick={handleUpdate} className="btn btn-outline-warning">Save Edit</button>
-                        <button onClick={handleDelete} className="btn btn-outline-danger">Delete Chirp</button>
                     </div>
                 </div>
             </div>
